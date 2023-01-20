@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Final Quest - Battle.mp3-728a5f85207a5805cbf4dcaaa35a1212.mp3str"
+
+[deps]
+
+source_file="res://music/Final Quest - Battle.mp3"
+dest_files=[ "res://.import/Final Quest - Battle.mp3-728a5f85207a5805cbf4dcaaa35a1212.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

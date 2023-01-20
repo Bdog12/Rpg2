@@ -1,0 +1,401 @@
+[gd_scene load_steps=45 format=2]
+
+[ext_resource path="res://Images/green.png" type="Texture" id=1]
+[ext_resource path="res://scripts/Enemy's/BlueSlime.gd" type="Script" id=2]
+[ext_resource path="res://scenes/EnemySkill.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/Enemy's/EnemiesskillControls.gd" type="Script" id=4]
+[ext_resource path="res://fonts/poco/Poco.tres" type="DynamicFont" id=5]
+[ext_resource path="res://scenes/HealSkill.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Blink.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Damage_Mover.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/pointer.png" type="Texture" id=9]
+
+[sub_resource type="Shader" id=32]
+code = "shader_type canvas_item;
+
+uniform bool active = false;
+void fragment(){
+	vec4 previous_color = texture(TEXTURE,UV);
+	vec4 white_color = vec4(1,1,1, previous_color.a); 
+	vec4 new_color = previous_color;
+	if (active == true)
+	{
+		new_color = white_color;
+	}
+	COLOR = new_color;
+}"
+
+[sub_resource type="ShaderMaterial" id=31]
+resource_local_to_scene = true
+render_priority = 1
+shader = SubResource( 32 )
+shader_param/active = false
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 1 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 1 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 1 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 1 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=40]
+atlas = ExtResource( 1 )
+region = Rect2( 160, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 1 )
+region = Rect2( 192, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=42]
+atlas = ExtResource( 1 )
+region = Rect2( 224, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=43]
+atlas = ExtResource( 1 )
+region = Rect2( 256, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=44]
+atlas = ExtResource( 1 )
+region = Rect2( 288, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=45]
+atlas = ExtResource( 1 )
+region = Rect2( 512, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=46]
+atlas = ExtResource( 1 )
+region = Rect2( 544, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=47]
+atlas = ExtResource( 1 )
+region = Rect2( 576, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=48]
+atlas = ExtResource( 1 )
+region = Rect2( 608, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=49]
+atlas = ExtResource( 1 )
+region = Rect2( 640, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=50]
+atlas = ExtResource( 1 )
+region = Rect2( 672, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=51]
+atlas = ExtResource( 1 )
+region = Rect2( 704, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=52]
+atlas = ExtResource( 1 )
+region = Rect2( 736, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=53]
+atlas = ExtResource( 1 )
+region = Rect2( 768, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=54]
+atlas = ExtResource( 1 )
+region = Rect2( 320, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=55]
+atlas = ExtResource( 1 )
+region = Rect2( 352, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=56]
+atlas = ExtResource( 1 )
+region = Rect2( 384, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=57]
+atlas = ExtResource( 1 )
+region = Rect2( 416, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=58]
+atlas = ExtResource( 1 )
+region = Rect2( 448, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=59]
+atlas = ExtResource( 1 )
+region = Rect2( 480, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=10]
+animations = [ {
+"frames": [ SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ) ],
+"loop": true,
+"name": "Attack",
+"speed": 8.0
+}, {
+"frames": [ SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ) ],
+"loop": false,
+"name": "Death",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ) ],
+"loop": true,
+"name": "idle",
+"speed": 6.0
+} ]
+
+[sub_resource type="Theme" id=11]
+default_font = ExtResource( 5 )
+
+[sub_resource type="Theme" id=33]
+default_font = ExtResource( 5 )
+
+[sub_resource type="Animation" id=34]
+resource_name = "Damage move up"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 46.25, -26.25 ), Vector2( 108.75, -130 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Label:custom_colors/font_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.996078, 0.0823529, 0.054902, 1 ) ]
+}
+
+[sub_resource type="Animation" id=60]
+resource_name = "Heal"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 46.25, -26.25 ), Vector2( 108.75, -130 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Label:custom_colors/font_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.141176, 0.937255, 0.0941176, 1 ) ]
+}
+
+[sub_resource type="Animation" id=35]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 46.25, -26.25 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=61]
+length = 0.001
+
+[sub_resource type="Animation" id=62]
+resource_name = "pointer"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("pointer/Pointer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 60 ), Vector2( 1, 74 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("pointer/Pointer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=63]
+resource_name = "pointerOff"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("pointer/Pointer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[node name="BlueSlime" type="Node2D"]
+script = ExtResource( 2 )
+Name = "BlueSlime"
+Skill1_CoolDown = 6
+
+[node name="Blink" parent="." instance=ExtResource( 7 )]
+reset_on_save = false
+
+[node name="Timer" type="Timer" parent="Blink"]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.999998, -79.9998 )
+scale = Vector2( 5, 5 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+material = SubResource( 31 )
+position = Vector2( 0.999998, -79.9998 )
+scale = Vector2( 5, 5 )
+frames = SubResource( 10 )
+animation = "idle"
+frame = 3
+playing = true
+
+[node name="HealSkill" parent="." instance=ExtResource( 6 )]
+
+[node name="EnemySkill" parent="HealSkill" instance=ExtResource( 3 )]
+margin_left = -45.0
+margin_top = -160.0
+margin_right = -45.0
+margin_bottom = -160.0
+rect_scale = Vector2( 0.5, 0.5 )
+Skill_Name = "Heal"
+Damage_type = "Blunt"
+Attacks_Details = "regens some health"
+timerMax = 5
+
+[node name="skillControls" type="Node2D" parent="."]
+script = ExtResource( 4 )
+HitTimer = 0.55
+
+[node name="EnemySkill" parent="skillControls" instance=ExtResource( 3 )]
+margin_left = -180.0
+margin_top = -160.0
+margin_right = -180.0
+margin_bottom = -160.0
+rect_scale = Vector2( 0.5, 0.5 )
+Skill_Name = "Tackle"
+Damage_type = "Blunt"
+Attacks_Details = "Uses Body to attack"
+
+[node name="Message" type="Node2D" parent="."]
+scale = Vector2( 0.5, 0.5 )
+
+[node name="TextBox" type="Label" parent="Message"]
+margin_left = -99.0
+margin_right = 68.0
+margin_bottom = 172.0
+rect_rotation = -0.135561
+rect_scale = Vector2( 1.20744, 1.17135 )
+theme = SubResource( 11 )
+autowrap = true
+
+[node name="pointer" type="TextureRect" parent="Message"]
+visible = false
+margin_left = -56.0
+margin_top = -4.0
+margin_right = 64.0
+margin_bottom = 124.0
+texture = ExtResource( 9 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 46.25
+margin_top = -26.25
+margin_right = 106.25
+margin_bottom = 5.75
+theme = SubResource( 33 )
+custom_colors/font_color = Color( 0.141176, 0.937255, 0.0941176, 1 )
+
+[node name="Damage_Mover" parent="." instance=ExtResource( 8 )]
+"anims/Damage move up" = SubResource( 34 )
+anims/Heal = SubResource( 60 )
+anims/RESET = SubResource( 35 )
+
+[node name="pointer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 61 )
+anims/pointer = SubResource( 62 )
+anims/pointerOff = SubResource( 63 )
+
+[node name="Pointer" type="Sprite" parent="pointer"]
+visible = false
+position = Vector2( 1, 60 )
+texture = ExtResource( 9 )
+
+[connection signal="timeout" from="Blink/Timer" to="." method="_on_Timer_timeout"]

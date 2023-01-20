@@ -1,0 +1,609 @@
+[gd_scene load_steps=39 format=2]
+
+[ext_resource path="res://scenes/marker.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/SceneHolder.gd" type="Script" id=2]
+[ext_resource path="res://scripts/MapUpdater.gd" type="Script" id=3]
+[ext_resource path="res://scenes/Knight.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Images/overworldmap.png" type="Texture" id=5]
+[ext_resource path="res://Images/YoungKnightsHead.png" type="Texture" id=6]
+[ext_resource path="res://scripts/Camera2D2.gd" type="Script" id=7]
+[ext_resource path="res://scripts/OverWorldValues.gd" type="Script" id=8]
+[ext_resource path="res://scenes/BatteScenes/BattleSence.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/BatteScenes/BattleSence2.tscn" type="PackedScene" id=10]
+[ext_resource path="res://music/Final Quest - World Map.mp3" type="AudioStream" id=11]
+[ext_resource path="res://music/Final Quest - Battle Approacing.mp3" type="AudioStream" id=12]
+
+[sub_resource type="Animation" id=10]
+resource_name = "Beach1Update"
+tracks/0/type = "value"
+tracks/0/path = NodePath("MarkerHolder/beach2:CanBeExplored")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "Beach2"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("YoungKnightsHead:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -293, 678 ), Vector2( -69, -25 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "Beach2Update"
+tracks/0/type = "value"
+tracks/0/path = NodePath("MarkerHolder/cave:CanBeExplored")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=27]
+resource_name = "BigTree"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("YoungKnightsHead:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 201, 816 ), Vector2( 544, 915 ), Vector2( 950, 960 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "Cave"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("YoungKnightsHead:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -69, -25 ), Vector2( 47, -333 ), Vector2( 118, -631 ) ]
+}
+
+[sub_resource type="Animation" id=18]
+resource_name = "CheckPoint"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("YoungKnightsHead:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 518, 139 ), Vector2( 785, -65 ), Vector2( 879, -310 ), Vector2( 632, -719 ) ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "CheckPointUpdate"
+tracks/0/type = "value"
+tracks/0/path = NodePath("MarkerHolder/Wheat:CanBeExplored")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MarkerHolder/CliffSide:CanBeExplored")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "CliffSide"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("YoungKnightsHead:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 632, -719 ), Vector2( 639, -928 ), Vector2( 442, -1045 ), Vector2( -193, -1095 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "CrossRoadsUpdate"
+tracks/0/type = "value"
+tracks/0/path = NodePath("MarkerHolder/BigTree:CanBeExplored")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MarkerHolder/darkForset:CanBeExplored")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "DarkForest"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("YoungKnightsHead:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 201, 816 ), Vector2( 324, 488 ), Vector2( 518, 139 ) ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "DarkForestUpdate"
+tracks/0/type = "value"
+tracks/0/path = NodePath("MarkerHolder/Checkpoint:CanBeExplored")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "GoblinTown"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("YoungKnightsHead:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 291, 1671 ), Vector2( -264, 1559 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "GoblinTownUpdate"
+tracks/0/type = "value"
+tracks/0/path = NodePath("MarkerHolder/beach1:CanBeExplored")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=21]
+resource_name = "GraveYard"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("YoungKnightsHead:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1318, -751 ), Vector2( 1518, -533 ), Vector2( 1606, -320 ) ]
+}
+
+[sub_resource type="Animation" id=24]
+resource_name = "GraveYardUpdate"
+tracks/0/type = "value"
+tracks/0/path = NodePath("MarkerHolder/Pond:CanBeExplored")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Plains"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("YoungKnightsHead:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1000, 1651 ), Vector2( 645, 1698 ), Vector2( 290, 1675 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "PlainsUpdate"
+tracks/0/type = "value"
+tracks/0/path = NodePath("MarkerHolder/goblintown:CanBeExplored")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MarkerHolder/crossRoads:CanBeExplored")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=23]
+resource_name = "Pond"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("YoungKnightsHead:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1606, -320 ), Vector2( 1584, 226 ) ]
+}
+
+[sub_resource type="Animation" id=25]
+resource_name = "PondUpdate"
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("YoungKnightsHead:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1532, 1533 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "SlimesMapUpdate"
+tracks/0/type = "value"
+tracks/0/path = NodePath("MarkerHolder/Plains:CanBeExplored")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=22]
+resource_name = "Wheat"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("YoungKnightsHead:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 632, -719 ), Vector2( 646, -947 ), Vector2( 1064, -951 ), Vector2( 1318, -751 ) ]
+}
+
+[sub_resource type="Animation" id=26]
+resource_name = "WheatUpdate"
+tracks/0/type = "value"
+tracks/0/path = NodePath("MarkerHolder/GraveYard:CanBeExplored")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "beach1"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("YoungKnightsHead:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -268, 1590 ), Vector2( -464, 1462 ), Vector2( -406, 1015 ), Vector2( -293, 678 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "crossRoads"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("YoungKnightsHead:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 297, 1673 ), Vector2( 21, 1642 ), Vector2( 109, 1139 ), Vector2( 201, 816 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "slime"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("YoungKnightsHead:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1529, 1526 ), Vector2( 1000, 1651 ) ]
+}
+
+[node name="Node2D2" type="Node2D"]
+
+[node name="Overworldmap2" type="Sprite" parent="."]
+position = Vector2( 1208, 174 )
+scale = Vector2( 11.9922, 14.7861 )
+texture = ExtResource( 5 )
+offset = Vector2( -60.9563, 6.1037 )
+script = ExtResource( 8 )
+
+[node name="MarkerHolder" type="Node2D" parent="."]
+position = Vector2( -3.05176e-05, -1.52588e-05 )
+script = ExtResource( 3 )
+
+[node name="beach1" parent="MarkerHolder" instance=ExtResource( 1 )]
+position = Vector2( -288, 680 )
+Level = ExtResource( 10 )
+LevelName = "beach1"
+PathThatOpens = "Beach1Update"
+
+[node name="crossRoads" parent="MarkerHolder" instance=ExtResource( 1 )]
+position = Vector2( 203, 832 )
+LevelName = "crossRoads"
+PathThatOpens = "CrossRoadsUpdate"
+
+[node name="BigTree" parent="MarkerHolder" instance=ExtResource( 1 )]
+position = Vector2( 958, 969 )
+LevelName = "BigTree"
+PathThatOpens = "Null"
+
+[node name="slimes" parent="MarkerHolder" instance=ExtResource( 1 )]
+position = Vector2( 1021, 1636 )
+Level = ExtResource( 9 )
+LevelName = "slime"
+CanBeExplored = true
+PathThatOpens = "SlimesMapUpdate"
+
+[node name="darkForset" parent="MarkerHolder" instance=ExtResource( 1 )]
+position = Vector2( 513, 149 )
+LevelName = "DarkForest"
+PathThatOpens = "DarkForestUpdate"
+
+[node name="beach2" parent="MarkerHolder" instance=ExtResource( 1 )]
+position = Vector2( -64, -26 )
+LevelName = "Beach2"
+CanBeExplored = true
+PathThatOpens = "Beach2Update"
+
+[node name="cave" parent="MarkerHolder" instance=ExtResource( 1 )]
+position = Vector2( 119, -625 )
+LevelName = "Cave"
+PathThatOpens = "Null"
+
+[node name="CliffSide" parent="MarkerHolder" instance=ExtResource( 1 )]
+position = Vector2( -189, -1077 )
+LevelName = "CliffSide"
+CanBeExplored = true
+PathThatOpens = "Null"
+
+[node name="Checkpoint" parent="MarkerHolder" instance=ExtResource( 1 )]
+position = Vector2( 655, -707 )
+LevelName = "CheckPoint"
+PathThatOpens = "CheckPointUpdate"
+
+[node name="Pond" parent="MarkerHolder" instance=ExtResource( 1 )]
+position = Vector2( 1581, 223 )
+LevelName = "Pond"
+CanBeExplored = true
+PathThatOpens = "PondUpdate"
+
+[node name="GraveYard" parent="MarkerHolder" instance=ExtResource( 1 )]
+position = Vector2( 1604, -319 )
+LevelName = "GraveYard"
+PathThatOpens = "GraveYardUpdate"
+
+[node name="Wheat" parent="MarkerHolder" instance=ExtResource( 1 )]
+position = Vector2( 1322, -755 )
+LevelName = "Wheat"
+PathThatOpens = "WheatUpdate"
+
+[node name="Plains" parent="MarkerHolder" instance=ExtResource( 1 )]
+position = Vector2( 292, 1675 )
+LevelName = "Plains"
+PathThatOpens = "PlainsUpdate"
+
+[node name="HomeTown" parent="MarkerHolder" instance=ExtResource( 1 )]
+position = Vector2( 1530, 1308 )
+
+[node name="goblintown" parent="MarkerHolder" instance=ExtResource( 1 )]
+position = Vector2( -258, 1559 )
+LevelName = "GoblinTown"
+PathThatOpens = "GoblinTownUpdate"
+
+[node name="YoungKnightsHead" type="Sprite" parent="."]
+position = Vector2( 1532, 1533 )
+scale = Vector2( 6, 6 )
+texture = ExtResource( 6 )
+
+[node name="Camera2D2" type="Camera2D" parent="YoungKnightsHead"]
+position = Vector2( -373.917, -28.942 )
+scale = Vector2( 0.166667, 0.166667 )
+anchor_mode = 0
+current = true
+limit_left = -1060
+limit_top = -1275
+limit_right = 2015
+limit_bottom = 1795
+limit_smoothed = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+script = ExtResource( 7 )
+
+[node name="Knight" parent="." instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 949, 672 )
+CurrentHealth = -106
+
+[node name="SceneHolder" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Beach1Update = SubResource( 10 )
+anims/Beach2 = SubResource( 11 )
+anims/Beach2Update = SubResource( 13 )
+anims/BigTree = SubResource( 27 )
+anims/Cave = SubResource( 14 )
+anims/CheckPoint = SubResource( 18 )
+anims/CheckPointUpdate = SubResource( 19 )
+anims/CliffSide = SubResource( 20 )
+anims/CrossRoadsUpdate = SubResource( 15 )
+anims/DarkForest = SubResource( 16 )
+anims/DarkForestUpdate = SubResource( 17 )
+anims/GoblinTown = SubResource( 1 )
+anims/GoblinTownUpdate = SubResource( 12 )
+anims/GraveYard = SubResource( 21 )
+anims/GraveYardUpdate = SubResource( 24 )
+anims/Plains = SubResource( 7 )
+anims/PlainsUpdate = SubResource( 8 )
+anims/Pond = SubResource( 23 )
+anims/PondUpdate = SubResource( 25 )
+anims/RESET = SubResource( 2 )
+anims/SlimesMapUpdate = SubResource( 5 )
+anims/Wheat = SubResource( 22 )
+anims/WheatUpdate = SubResource( 26 )
+anims/beach1 = SubResource( 4 )
+anims/crossRoads = SubResource( 9 )
+anims/slime = SubResource( 3 )
+
+[node name="startBattle" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 1220.2, -5393.6 )
+scale = Vector2( 0.8, 0.8 )
+stream = ExtResource( 12 )
+volume_db = 10.0
+max_distance = 20000.0
+attenuation = 0.0167465
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 339, -7582 )
+stream = ExtResource( 11 )
+volume_db = -10.0
+autoplay = true
+max_distance = 20000.0
+attenuation = 0.0167465
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[connection signal="finished" from="startBattle" to="MarkerHolder/beach1" method="_on_startBattle_finished"]

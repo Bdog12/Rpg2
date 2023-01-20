@@ -1,0 +1,97 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scripts/BattleSence.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Knight.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/BattleOverUi.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/backGround.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Enemies/BlueSlime.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/BattleMenuUi.tscn" type="PackedScene" id=6]
+[ext_resource path="res://music/Final Quest - Battle.mp3" type="AudioStream" id=7]
+[ext_resource path="res://music/Final Quest - Battle Triumph.mp3" type="AudioStream" id=8]
+[ext_resource path="res://scenes/battleEnd.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/Enemies/greenSlime.tscn" type="PackedScene" id=10]
+
+[sub_resource type="Animation" id=1]
+resource_name = "pointer1"
+loop = true
+
+[node name="BattleSence" type="Node2D"]
+scale = Vector2( 1.775, 1.78 )
+script = ExtResource( 1 )
+LevelName = "Slimes"
+EnemisBar_ON = [ true, true, true ]
+
+[node name="Node2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( -2, -2 )
+
+[node name="EnemySpawn" type="Node2D" parent="."]
+
+[node name="EnemySpawnLocation" type="Position2D" parent="EnemySpawn"]
+position = Vector2( 952, 490 )
+rotation = 2.87979
+
+[node name="EnemySpawnLocatiom" type="Position2D" parent="EnemySpawn"]
+position = Vector2( 802, 490 )
+
+[node name="EnemySpawnLocation1" type="Position2D" parent="EnemySpawn"]
+position = Vector2( 637, 481 )
+
+[node name="HeroSpwanLocation" type="Node2D" parent="."]
+
+[node name="HeroSpwanLocation" type="Position2D" parent="HeroSpwanLocation"]
+position = Vector2( 52, 382 )
+
+[node name="HeroSpwanLocation2" type="Position2D" parent="HeroSpwanLocation"]
+position = Vector2( 213, 391 )
+
+[node name="HeroSpwanLocation3" type="Position2D" parent="HeroSpwanLocation"]
+position = Vector2( 363, 391 )
+rotation = 2.87979
+
+[node name="Knight" parent="." instance=ExtResource( 2 )]
+position = Vector2( 354, 440 )
+Name = "Knight"
+
+[node name="UI" parent="." instance=ExtResource( 6 )]
+margin_top = -1.0
+margin_bottom = -1.0
+
+[node name="BattleOverUi" parent="." instance=ExtResource( 3 )]
+margin_left = -1308.73
+margin_top = 31.0
+margin_right = -1246.73
+margin_bottom = 31.0
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="enemy1" parent="Enemies" instance=ExtResource( 5 )]
+show_behind_parent = true
+position = Vector2( 616.901, 537.079 )
+Skill1_CoolDown = 5
+Xp_value = 3
+
+[node name="enemy2" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( 803.944, 539.326 )
+
+[node name="enemy3" parent="Enemies" instance=ExtResource( 5 )]
+position = Vector2( 983.099, 536.517 )
+Xp_value = 3
+
+[node name="AnimationPlayer" parent="." instance=ExtResource( 9 )]
+anims/pointer1 = SubResource( 1 )
+
+[node name="music" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 520, 0 )
+stream = ExtResource( 7 )
+volume_db = -10.0
+autoplay = true
+attenuation = 0.066986
+
+[node name="BattleWin" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 520, 0 )
+stream = ExtResource( 8 )
+volume_db = -10.0
+attenuation = 0.066986
+
+[connection signal="finished" from="music" to="." method="_on_AudioStreamPlayer2D_finished"]
+[connection signal="finished" from="BattleWin" to="." method="_on_AudioStreamPlayer2D_finished"]

@@ -1,0 +1,326 @@
+[gd_scene load_steps=40 format=2]
+
+[ext_resource path="res://Images/crabWIthKnife.png" type="Texture" id=1]
+[ext_resource path="res://scripts/Enemy's/BlueSlime.gd" type="Script" id=2]
+[ext_resource path="res://scenes/EnemySkill.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/Enemy's/CrabSkill.gd" type="Script" id=4]
+[ext_resource path="res://fonts/poco/Poco.tres" type="DynamicFont" id=5]
+[ext_resource path="res://scenes/Blink.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/blink.gdshader" type="Shader" id=7]
+[ext_resource path="res://scenes/Damage_Mover.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/pointer.png" type="Texture" id=9]
+
+[sub_resource type="ShaderMaterial" id=43]
+resource_local_to_scene = true
+shader = ExtResource( 7 )
+shader_param/active = false
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 1 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 1 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 1 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 1 )
+region = Rect2( 256, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 1 )
+region = Rect2( 320, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 1 )
+region = Rect2( 384, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 1 )
+region = Rect2( 448, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=40]
+atlas = ExtResource( 1 )
+region = Rect2( 512, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 1 )
+region = Rect2( 576, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=42]
+atlas = ExtResource( 1 )
+region = Rect2( 640, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 1 )
+region = Rect2( 576, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 1 )
+region = Rect2( 640, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 1 )
+region = Rect2( 704, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 1 )
+region = Rect2( 768, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 1 )
+region = Rect2( 832, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 1 )
+region = Rect2( 896, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 1 )
+region = Rect2( 960, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 1 )
+region = Rect2( 1024, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 1 )
+region = Rect2( 1088, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=10]
+resource_local_to_scene = true
+animations = [ {
+"frames": [ SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ) ],
+"loop": true,
+"name": "Attack",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ) ],
+"loop": false,
+"name": "Death",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 31 ) ],
+"loop": true,
+"name": "idle",
+"speed": 6.0
+} ]
+
+[sub_resource type="Theme" id=11]
+default_font = ExtResource( 5 )
+
+[sub_resource type="Animation" id=44]
+resource_name = "HitEffect"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:material:shader_param/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=45]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:material:shader_param/hit_opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:material:render_priority")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite:material:shader_param/active")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=46]
+resource_name = "stopHiteffect"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:material:shader_param/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Theme" id=47]
+default_font = ExtResource( 5 )
+
+[sub_resource type="Animation" id=48]
+resource_name = "Damage move up"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 46.25, -26.25 ), Vector2( 108.75, -130 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=49]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 46.25, -26.25 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="crab" type="Node2D"]
+script = ExtResource( 2 )
+Name = "crab"
+Maxhealth = 22
+CurrentHealth = 22
+Attack = 2
+Skill1_CoolDown = 1
+Xp_value = 10
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+material = SubResource( 43 )
+position = Vector2( 0.999998, -79.9998 )
+scale = Vector2( 5, 5 )
+frames = SubResource( 10 )
+animation = "idle"
+playing = true
+
+[node name="skillControls" type="Node2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="EnemySkill" parent="skillControls" instance=ExtResource( 3 )]
+margin_left = -53.0
+margin_top = -105.0
+margin_right = -53.0
+margin_bottom = -105.0
+rect_scale = Vector2( 0.5, 0.5 )
+Skill_Name = "Slash"
+Attacks_Details = "A quick slash"
+
+[node name="Message" type="Node2D" parent="."]
+scale = Vector2( 0.5, 0.5 )
+
+[node name="pointer" type="TextureRect" parent="Message"]
+visible = false
+margin_left = 20.0
+margin_top = 154.0
+margin_right = 140.0
+margin_bottom = 282.0
+texture = ExtResource( 9 )
+
+[node name="TextBox" type="Label" parent="Message"]
+margin_left = -99.0
+margin_right = 68.0
+margin_bottom = 172.0
+rect_rotation = -0.135561
+rect_scale = Vector2( 1.20744, 1.17135 )
+theme = SubResource( 11 )
+autowrap = true
+
+[node name="Blink" parent="." instance=ExtResource( 6 )]
+reset_on_save = false
+anims/HitEffect = SubResource( 44 )
+anims/RESET = SubResource( 45 )
+anims/stopHiteffect = SubResource( 46 )
+
+[node name="Timer" type="Timer" parent="Blink"]
+
+[node name="Label" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 46.25
+margin_top = -26.25
+margin_right = 106.25
+margin_bottom = 5.75
+theme = SubResource( 47 )
+custom_colors/font_color = Color( 0.992157, 0, 0, 1 )
+text = "10"
+
+[node name="Damage_Mover" parent="." instance=ExtResource( 8 )]
+"anims/Damage move up" = SubResource( 48 )
+anims/RESET = SubResource( 49 )
+
+[connection signal="timeout" from="Blink/Timer" to="." method="_on_Timer_timeout"]

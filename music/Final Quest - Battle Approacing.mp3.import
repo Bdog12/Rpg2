@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Final Quest - Battle Approacing.mp3-c452955d471dd271abe9e7010c68ebcd.mp3str"
+
+[deps]
+
+source_file="res://music/Final Quest - Battle Approacing.mp3"
+dest_files=[ "res://.import/Final Quest - Battle Approacing.mp3-c452955d471dd271abe9e7010c68ebcd.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
