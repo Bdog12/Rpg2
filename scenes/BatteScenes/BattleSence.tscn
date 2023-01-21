@@ -51,6 +51,7 @@ rotation = 2.87979
 [node name="Knight" parent="." instance=ExtResource( 2 )]
 position = Vector2( 354, 440 )
 Name = "Knight"
+Attack = 20
 
 [node name="UI" parent="." instance=ExtResource( 6 )]
 margin_top = -1.0

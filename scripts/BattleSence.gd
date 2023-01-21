@@ -104,7 +104,7 @@ func Battle_Over():
 	$BattleOverUi.Battle_End()
 	
 	yield(get_tree().create_timer(8), "timeout")
-	var overWorld = load("res://Sences/OverworldMap.tscn")
+	var overWorld = load("res://scenes/OverworldMap.tscn")
 	SaveFlie.save_data()
 	OverWorldValues.BattleWon = true
 	get_tree().change_scene_to(overWorld)

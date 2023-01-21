@@ -604,6 +604,4 @@ autoplay = true
 max_distance = 20000.0
 attenuation = 0.0167465
 
-[node name="Node2D" type="Node2D" parent="."]
-
 [connection signal="finished" from="startBattle" to="MarkerHolder/beach1" method="_on_startBattle_finished"]
